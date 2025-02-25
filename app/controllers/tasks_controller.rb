@@ -1,6 +1,10 @@
 class TasksController < ApplicationController
   def index
+    if session["user_id"] != nil
     @tasks = Task.all
+    else
+      redirect_to "/login"
+    end
   end
 
   def create
